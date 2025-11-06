@@ -1,60 +1,111 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Ingressos - Setland</title>
-  <link rel="stylesheet" href="../css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ingressos - Setland</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <header class="header">
-    <img src="../img/setland-logo.png" alt="Setland" class="logo">
-    <div class="profile-icon" id="profileIcon">👤</div>
-  </header>
 
-  <aside class="sidebar" id="sidebar">
-    <button class="close-btn" id="closeSidebar">×</button>
-    <div id="sidebarContent"></div>
-  </aside>
-
-  <main class="tickets">
-    <h2>Escolha seus ingressos</h2>
-    <div class="ticket-list">
-      <div class="ticket" data-type="Adulto" data-price="80">
-        <h3>Adulto</h3>
-        <p>R$80</p>
-        <div class="counter">
-          <button class="minus">-</button>
-          <span>0</span>
-          <button class="plus">+</button>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="../img/setland-logo.png" alt="Logo Setland">
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html#parque" class="nav-link">O Parque</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Cardápio</a></li>
+                <li class="nav-item"><a href="ingressos.html" class="nav-link">Ingressos</a></li>
+                <li class="nav-item"><a href="index.html#contato" class="nav-link">Contato</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Sobre nós</a></li>
+            </ul>
+            <a href="login.html" class="nav-btn-login" id="nav-login-button">Login</a>
         </div>
-      </div>
-      <div class="ticket" data-type="Infantil" data-price="50">
-        <h3>Infantil</h3>
-        <p>R$50</p>
-        <div class="counter">
-          <button class="minus">-</button>
-          <span>0</span>
-          <button class="plus">+</button>
-        </div>
-      </div>
-      <div class="ticket" data-type="VIP" data-price="150">
-        <h3>VIP</h3>
-        <p>R$150</p>
-        <div class="counter">
-          <button class="minus">-</button>
-          <span>0</span>
-          <button class="plus">+</button>
-        </div>
-      </div>
-    </div>
+    </nav>
 
-    <div class="total">
-      <h3>Total: R$<span id="totalValue">0</span></h3>
-      <button id="finalizarCompra" class="btn-primary">Finalizar Compra</button>
-    </div>
-  </main>
+    <main class="tickets-page">
+        <div class="tickets-container">
+            <h2>Escolha seus Ingressos</h2>
+            <div class="ticket-list">
+                
+                <div class="ticket-card" data-type="Adulto" data-price="80">
+                    <div class="ticket-info">
+                        <h3>Adulto</h3>
+                        <p class="ticket-price">R$ 80,00</p>
+                    </div>
+                    <div class="counter">
+                        <button class="counter-btn minus" aria-label="Remover um">-</button>
+                        <span class="counter-value">0</span>
+                        <button class="counter-btn plus" aria-label="Adicionar um">+</button>
+                    </div>
+                </div>
+                
+                <div class="ticket-card" data-type="Infantil" data-price="50">
+                    <div class="ticket-info">
+                        <h3>Infantil</h3>
+                        <p class="ticket-price">R$ 50,00</p>
+                    </div>
+                    <div class="counter">
+                        <button class="counter-btn minus" aria-label="Remover um">-</button>
+                        <span class="counter-value">0</span>
+                        <button class="counter-btn plus" aria-label="Adicionar um">+</button>
+                    </div>
+                </div>
+                
+                <div class="ticket-card" data-type="VIP" data-price="150">
+                    <div class="ticket-info">
+                        <h3>VIP</h3>
+                        <p class="ticket-price">R$ 150,00</p>
+                    </div>
+                    <div class="counter">
+                        <button class="counter-btn minus" aria-label="Remover um">-</button>
+                        <span class="counter-value">0</span>
+                        <button class="counter-btn plus" aria-label="Adicionar um">+</button>
+                    </div>
+                </div>
+                
+            </div>
 
-  <script src="js/script.js"></script>
+            <div class="total-container">
+                <div class="total-display">
+                    <h3>Total:</h3>
+                    <span id="totalValue">R$ 0,00</span>
+                </div>
+                <button id="finalizarCompra" class="btn-primary">Finalizar Compra</button>
+            </div>
+        </div>
+    </main>
+
+    <footer id="contato" class="footer-container">
+        <div class="footer-content">
+            <div class="footer-about">
+                <img src="../img/setland-logo.png" alt="Logo Setland" class="footer-logo">
+                <p>O maior parque temático do Centro Oeste está localizado em Caldas Novas e conta com mais de 10 atrações e cenários de 3 eras do tempo: <strong>Glacial - Medieval - Futurístico</strong></p>
+            </div>
+            <div class="footer-info">
+                <h3>Mais Informações</h3>
+                <p>Das 18h às 00h</p>
+                <p>De terça à domingo</p>
+                <a href="#">Localização</a>
+            </div>
+            <div class="footer-contact">
+                <h3>Contato</h3>
+                <p>Whatsapp</p>
+                <p class="whatsapp-number">(64) 99347-1297</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Rua Presidente Getúlio Vargas Quadra 63ª Lote 14, 20 e 21 Lagoa Quente, Caldas Novas - GO, 75680-001</p>
+            <p>Copyright Setland 2024 . Terms & Privacy</p>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
 </body>
 </html>

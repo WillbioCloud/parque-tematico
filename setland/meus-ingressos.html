@@ -1,27 +1,70 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Meus Ingressos - Setland</title>
-  <link rel="stylesheet" href="css/style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Meus Ingressos - Setland</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
-  <header class="header">
-    <img src="img/setland-logo.png" alt="Setland" class="logo">
-    <div class="profile-icon" id="profileIcon">👤</div>
-  </header>
 
-  <aside class="sidebar" id="sidebar">
-    <button class="close-btn" id="closeSidebar">×</button>
-    <div id="sidebarContent"></div>
-  </aside>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="../img/setland-logo.png" alt="Logo Setland">
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="index.html#parque" class="nav-link">O Parque</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Cardápio</a></li>
+                <li class="nav-item"><a href="ingressos.html" class="nav-link">Ingressos</a></li>
+                <li class="nav-item"><a href="index.html#contato" class="nav-link">Contato</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Sobre nós</a></li>
+            </ul>
+            <a href="login.html" class="nav-btn-login" id="nav-login-button">Login</a>
+        </div>
+    </nav>
 
-  <main class="meus-ingressos">
-    <h2>Meus Ingressos</h2>
-    <div id="ingressoCards" class="card-container"></div>
-  </main>
+    <main class="meus-ingressos-page">
+        <div class="meus-ingressos-container">
+            <div class="meus-ingressos-header">
+                <h2>Meus Ingressos</h2>
+                <button id="logoutButton" class="btn-logout">Sair (Logout)</button>
+            </div>
+            
+            <div id="ingressoCardsContainer" class="ingresso-cards-grid">
+                </div>
+        </div>
+    </main>
 
-  <script src="js/script.js"></script>
+    <footer id="contato" class="footer-container">
+        <div class="footer-content">
+            <div class="footer-about">
+                <img src="../img/setland-logo.png" alt="Logo Setland" class="footer-logo">
+                <p>O maior parque temático do Centro Oeste está localizado em Caldas Novas e conta com mais de 10 atrações e cenários de 3 eras do tempo: <strong>Glacial - Medieval - Futurístico</strong></p>
+            </div>
+            <div class="footer-info">
+                <h3>Mais Informações</h3>
+                <p>Das 18h às 00h</p>
+                <p>De terça à domingo</p>
+                <a href="#">Localização</a>
+            </div>
+            <div class="footer-contact">
+                <h3>Contato</h3>
+                <p>Whatsapp</p>
+                <p class="whatsapp-number">(64) 99347-1297</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Rua Presidente Getúlio Vargas Quadra 63ª Lote 14, 20 e 21 Lagoa Quente, Caldas Novas - GO, 75680-001</p>
+            <p>Copyright Setland 2024 . Terms & Privacy</p>
+        </div>
+    </footer>
+
+    <script src="../js/script.js"></script>
 </body>
 </html>
