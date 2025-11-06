@@ -160,8 +160,8 @@ h1, h2, h3 {
 .scroll-down img {
     width: 16px;
     margin: 0.5rem auto 0;
-    /* Adicione uma animação de 'bounce' se desejar */
 }
+
 /* =======================
    3.5. SHOWCASE SECTION (Carrossel Swiper)
    ======================== */
@@ -240,12 +240,113 @@ h1, h2, h3 {
 
 
 /* =======================
-   3.8. THEMES SECTION (Placeholder)
+   3.8. THEMES SECTION (Conteúdo)
    ======================== */
 .themes-container {
     padding-top: 250px; /* (100px do translateY + 150px da margem negativa) */
+    padding-bottom: 5rem;
     background-color: var(--color-background);
+    overflow: hidden; /* Evita que os números vazem do layout */
 }
+
+.theme-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto 6rem auto;
+    padding: 0 5%;
+}
+
+/* Layout invertido para o card 02 (Medieval) */
+.theme-card.theme-inverted .theme-content {
+    order: 2; /* Joga o texto para a direita */
+}
+.theme-card.theme-inverted .theme-image {
+    order: 1; /* Joga a imagem para a esquerda */
+}
+
+.theme-content {
+    position: relative; /* Para o número "fantasma" */
+}
+
+.theme-pretitle {
+    font-family: var(--font-secondary);
+    font-size: 0.9rem;
+    color: var(--color-accent-light); /* Dourado claro (do seu design) */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.theme-title {
+    font-size: 2.8rem; /* Título (Glacial, Medieval...) */
+    color: var(--color-text-primary);
+    margin: 0.5rem 0 1.5rem 0;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    position: relative; /* Para o número ficar "atrás" */
+    z-index: 1;
+}
+
+.theme-number {
+    font-size: 8rem; /* Número "fantasma" (01, 02, 03) */
+    font-weight: 700;
+    color: rgba(255, 255, 255, 0.05);
+    line-height: 1;
+    
+    position: absolute;
+    left: -2rem;
+    top: -2.5rem;
+    z-index: -1;
+}
+/* Ajustes finos para os números */
+.theme-card:nth-child(2) .theme-number { left: -3rem; }
+.theme-card:nth-child(3) .theme-number { left: -3rem; }
+
+
+.theme-content p {
+    font-family: var(--font-primary);
+    color: var(--color-text-secondary);
+    font-size: 0.95rem;
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+}
+
+.theme-link {
+    font-family: var(--font-secondary);
+    font-weight: 600;
+    color: var(--color-accent);
+    transition: all 0.3s ease;
+}
+.theme-link span {
+    transition: margin-left 0.3s ease;
+}
+.theme-link:hover {
+    color: var(--color-accent-light);
+}
+.theme-link:hover span {
+    margin-left: 8px; /* Efeito da seta "→" andando */
+}
+
+.theme-image {
+    border-radius: 16px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.theme-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.theme-image:hover img {
+    transform: scale(1.05); /* Efeito de zoom sutil */
+}
+
 /* =======================
    4. FOOTER
    ======================== */
@@ -313,4 +414,116 @@ h1, h2, h3 {
 
 .footer-bottom p {
     margin-bottom: 0.5rem;
+}
+/* =======================
+   5. AUTH PAGES (Login / Cadastro)
+   ======================== */
+
+.auth-page {
+    /* Centraliza o container na tela inteira */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    
+    /* Fundo gradiente sutil, mais escuro */
+    background: linear-gradient(135deg, var(--color-background), #060B11);
+}
+
+.auth-container {
+    width: 100%;
+    max-width: 400px;
+    padding: 2.5rem;
+    background-color: rgba(255, 255, 255, 0.05); /* Fundo semi-transparente */
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 16px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: center;
+}
+
+.auth-container h2 {
+    font-size: 2rem;
+    color: var(--color-text-primary);
+    margin-bottom: 2rem;
+    font-family: var(--font-secondary);
+}
+
+.auth-container form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.auth-container input {
+    font-family: var(--font-primary);
+    font-size: 0.95rem;
+    padding: 0.9rem 1rem;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    background-color: rgba(0, 0, 0, 0.2);
+    color: var(--color-text-primary);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.auth-container input::placeholder {
+    color: var(--color-text-secondary);
+}
+
+.auth-container input:focus {
+    outline: none;
+    border-color: var(--color-accent);
+    background-color: transparent;
+}
+
+/* Botão principal (reutilizando o estilo do .nav-btn-login) */
+.btn-primary {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: 1rem;
+    padding: 0.9rem 1.5rem;
+    background-color: var(--color-accent);
+    color: var(--color-background);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+    border: none;
+    margin-top: 1rem;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-accent-light);
+    transform: scale(1.03);
+}
+
+.auth-container p {
+    margin-top: 1.5rem;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+}
+
+.auth-container p a {
+    color: var(--color-accent);
+    font-weight: 600;
+    text-decoration: none;
+}
+.auth-container p a:hover {
+    text-decoration: underline;
+}
+
+/* Classe para alertas de erro no JS */
+.alerta {
+    padding: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-align: center;
+}
+.alerta.sucesso {
+    background-color: #28a745;
+    color: white;
+}
+.alerta.erro {
+    background-color: #dc3545;
+    color: white;
 }
