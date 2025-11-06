@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Ingressos - Setland</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="header">
+    <img src="img/setland-logo.png" alt="Setland" class="logo">
+    <div class="profile-icon" id="profileIcon">👤</div>
+  </header>
+
+  <aside class="sidebar" id="sidebar">
+    <button class="close-btn" id="closeSidebar">×</button>
+    <div id="sidebarContent"></div>
+  </aside>
+
+  <main class="tickets">
+    <h2>Escolha seus ingressos</h2>
+    <div class="ticket-list">
+      <div class="ticket" data-type="Adulto" data-price="80">
+        <h3>Adulto</h3>
+        <p>R$80</p>
+        <div class="counter">
+          <button class="minus">-</button>
+          <span>0</span>
+          <button class="plus">+</button>
+        </div>
+      </div>
+      <div class="ticket" data-type="Infantil" data-price="50">
+        <h3>Infantil</h3>
+        <p>R$50</p>
+        <div class="counter">
+          <button class="minus">-</button>
+          <span>0</span>
+          <button class="plus">+</button>
+        </div>
+      </div>
+      <div class="ticket" data-type="VIP" data-price="150">
+        <h3>VIP</h3>
+        <p>R$150</p>
+        <div class="counter">
+          <button class="minus">-</button>
+          <span>0</span>
+          <button class="plus">+</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="total">
+      <h3>Total: R$<span id="totalValue">0</span></h3>
+      <button id="finalizarCompra" class="btn-primary">Finalizar Compra</button>
+    </div>
+  </main>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
