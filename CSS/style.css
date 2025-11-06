@@ -1,208 +1,316 @@
-/* =============================
-   SETLAND - ESTILO PRINCIPAL
-   ============================= */
+/* =======================
+   1. VARIÁVEIS E ESTILOS GLOBAIS
+   ======================== */
+
+/* Importando as fontes do index.html */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
 
 :root {
-  --bg-dark: #0b132b;
-  --bg-light: #1c2541;
-  --accent: #ffcb3c;
-  --text-light: #f5f5f5;
-  --text-muted: #cccccc;
-  --btn-hover: #ffd15a;
-  --transition: all 0.3s ease;
+    /* Cores (Baseado nos screenshots) */
+    --color-background: #0A101A; /* Azul bem escuro do fundo */
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #adb5bd; /* Cinza claro para subtextos */
+    --color-accent: #D4AF37; /* Dourado (do seu prompt) */
+    --color-accent-light: #F0E68C; /* Dourado/Amarelo claro (dos textos "A Magia não para") */
+    
+    /* Fontes */
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Montserrat', sans-serif;
 }
 
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  background-color: var(--bg-dark);
-  color: var(--text-light);
-  overflow-x: hidden;
+    font-family: var(--font-primary);
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    line-height: 1.6;
 }
 
-/* =============================
-   HERO SECTION
-   ============================= */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+}
+
+/* =======================
+   2. NAVBAR
+   ======================== */
+.navbar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 5%;
+    background-color: rgba(10, 16, 26, 0.7); /* Fundo semi-transparente */
+    backdrop-filter: blur(10px); /* Efeito de vidro fosco */
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
+}
+
+.navbar-logo img {
+    height: 50px; /* Ajuste conforme o tamanho do seu logo */
+}
+
+.nav-menu {
+    display: flex;
+    gap: 1.5rem;
+}
+
+.nav-link {
+    font-family: var(--font-secondary);
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--color-text-primary);
+    transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+    color: var(--color-accent);
+}
+
+.nav-btn-login {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+    background-color: var(--color-accent);
+    color: var(--color-background);
+    border-radius: 20px;
+    transition: all 0.3s ease;
+}
+
+.nav-btn-login:hover {
+    background-color: var(--color-accent-light);
+    transform: scale(1.05);
+}
+
+/* =======================
+   3. HERO SECTION
+   ======================== */
 .hero {
-  position: relative;
-  background: url("../img/castelo-bg.jpg") no-repeat center/cover;
-  height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.hero::after {
-  content: "";
-  position: absolute;
-  inset: 0;
-  background: rgba(0, 0, 0, 0.5);
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 5%;
+    
+    /* Imagem de fundo do seu design */
+    background-image: linear-gradient(rgba(10, 16, 26, 0.6), rgba(10, 16, 26, 0.9)), url('../img/castelo-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 900px;
-  padding: 20px;
+    max-width: 800px;
+    position: relative;
+    top: -50px; /* Leve ajuste para compensar a navbar */
 }
 
-.hero-content h1 {
-  font-size: 2.8rem;
-  font-weight: 700;
-  color: #fff;
-  line-height: 1.3;
-  margin-bottom: 20px;
+.hero-title {
+    font-size: 3.5rem; /* Tamanho grande do título */
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-.hero-image {
-  width: 100%;
-  border-radius: 15px;
-  margin-top: 10px;
-  box-shadow: 0 0 30px rgba(0, 0, 0, 0.5);
+.scroll-down {
+    display: inline-block;
+    margin-top: 3rem;
+    font-family: var(--font-secondary);
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-/* =============================
-   SEÇÕES TEMÁTICAS
-   ============================= */
-.section {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 100px 8%;
-  gap: 40px;
+.scroll-down img {
+    width: 16px;
+    margin: 0.5rem auto 0;
+    /* Adicione uma animação de 'bounce' se desejar */
+}
+/* =======================
+   3.5. SHOWCASE SECTION (Carrossel Swiper)
+   ======================== */
+
+.showcase {
+    position: relative;
+    width: 100%;
+    margin-bottom: -150px; /* Efeito "vazado" */
+    z-index: 10;
 }
 
-.section:nth-child(even) {
-  flex-direction: row-reverse;
+.showcase-carousel {
+    max-width: 1300px;
+    margin: 0 auto;
+    padding: 0 5%;
+    
+    /* Puxa o carrossel para cima, sobrepondo o Hero */
+    transform: translateY(-100px); 
 }
 
-.section .text {
-  flex: 1;
+.showcase-carousel .swiper-slide {
+    border-radius: 24px;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    height: 400px; /* Altura fixa para os slides */
+    transition: all 0.3s ease;
 }
 
-.section .text h2 {
-  font-size: 2.4rem;
-  font-weight: 700;
-  color: var(--accent);
-  margin-bottom: 15px;
+.showcase-carousel .swiper-slide:hover {
+    transform: scale(1.02);
 }
 
-.section .text p {
-  font-size: 1rem;
-  line-height: 1.6;
-  color: var(--text-muted);
-  margin-bottom: 25px;
+.showcase-carousel .swiper-slide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Garante que a imagem preencha */
 }
 
-.section .btn {
-  display: inline-block;
-  background: var(--accent);
-  color: #000;
-  font-weight: 600;
-  text-decoration: none;
-  padding: 10px 25px;
-  border-radius: 25px;
-  transition: var(--transition);
+/* --- Estilização dos controles do Swiper --- */
+
+/* Cor das setas e bolinhas (dourado) */
+.showcase-carousel .swiper-pagination-bullet-active,
+.showcase-carousel .swiper-button-next,
+.showcase-carousel .swiper-button-prev {
+    color: var(--color-accent); 
 }
 
-.section .btn:hover {
-  background: var(--btn-hover);
-  transform: scale(1.05);
+/* Fundo das setas */
+.showcase-carousel .swiper-button-next,
+.showcase-carousel .swiper-button-prev {
+    width: 50px;
+    height: 50px;
+    background-color: rgba(10, 16, 26, 0.5);
+    border-radius: 50%;
+    backdrop-filter: blur(5px);
+    transition: all 0.3s ease;
+}
+.showcase-carousel .swiper-button-next:hover,
+.showcase-carousel .swiper-button-prev:hover {
+    background-color: rgba(10, 16, 26, 0.8);
+    transform: scale(1.1);
 }
 
-.section .image {
-  flex: 1;
-  display: flex;
-  justify-content: center;
+.showcase-carousel .swiper-button-next::after,
+.showcase-carousel .swiper-button-prev::after {
+    font-size: 1.2rem;
+    font-weight: 800;
 }
 
-.section .image img {
-  width: 100%;
-  border-radius: 20px;
-  box-shadow: 0 0 20px rgba(255, 203, 60, 0.2);
-  transition: transform 0.4s ease;
+/* Posição da paginação (bolinhas) */
+.showcase-carousel .swiper-pagination {
+    position: relative;
+    bottom: -1rem;
+    margin-top: 2rem;
 }
 
-.section .image img:hover {
-  transform: scale(1.03);
-}
 
-/* =============================
-   RODAPÉ
-   ============================= */
-footer {
-  background: var(--bg-light);
-  padding: 60px 8% 20px;
-  color: var(--text-muted);
-  text-align: center;
+/* =======================
+   3.8. THEMES SECTION (Placeholder)
+   ======================== */
+.themes-container {
+    padding-top: 250px; /* (100px do translateY + 150px da margem negativa) */
+    background-color: var(--color-background);
+}
+/* =======================
+   4. FOOTER
+   ======================== */
+.footer-container {
+    background-color: #060B11; /* Um tom ligeiramente diferente do fundo */
+    padding: 4rem 5% 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-content {
-  display: flex;
-  justify-content: space-around;
-  flex-wrap: wrap;
-  gap: 30px;
-  margin-bottom: 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr; /* Coluna da esquerda maior */
+    gap: 3rem;
+    max-width: 1300px;
+    margin: 0 auto 3rem auto;
 }
 
-.footer-content div {
-  flex: 1 1 250px;
+.footer-logo {
+    height: 40px;
+    margin-bottom: 1rem;
 }
 
-.footer-content h4 {
-  color: var(--accent);
-  margin-bottom: 10px;
-  font-size: 1.1rem;
+.footer-about p {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    max-width: 350px;
 }
 
-.footer-content p {
-  font-size: 0.95rem;
-  color: var(--text-light);
+.footer-info h3,
+.footer-contact h3 {
+    font-family: var(--font-secondary);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-primary);
 }
 
-.copy {
-  font-size: 0.85rem;
-  opacity: 0.8;
+.footer-info p,
+.footer-contact p,
+.footer-info a {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
 }
 
-/* =============================
-   RESPONSIVIDADE
-   ============================= */
-@media (max-width: 1000px) {
-  .section {
-    flex-direction: column;
+.footer-info a {
+    color: var(--color-accent);
+    transition: color 0.3s ease;
+}
+.footer-info a:hover {
+    color: var(--color-accent-light);
+}
+
+.footer-contact .whatsapp-number {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
+
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
     text-align: center;
-  }
-
-  .section:nth-child(even) {
-    flex-direction: column;
-  }
-
-  .hero-content h1 {
-    font-size: 2rem;
-  }
-
-  .section .text h2 {
-    font-size: 1.8rem;
-  }
-
-  .section .image img {
-    width: 90%;
-  }
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
 }
 
-@media (max-width: 600px) {
-  .hero-content h1 {
-    font-size: 1.6rem;
-  }
-
-  .section {
-    padding: 70px 5%;
-  }
+.footer-bottom p {
+    margin-bottom: 0.5rem;
 }

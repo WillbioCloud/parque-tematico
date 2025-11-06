@@ -1,211 +1,234 @@
-/* ========= CONFIGURAÇÕES GERAIS ========= */
+/* =======================
+   1. VARIÁVEIS E ESTILOS GLOBAIS
+   ======================== */
+
+/* Importando as fontes do index.html */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap');
+
+:root {
+    /* Cores (Baseado nos screenshots) */
+    --color-background: #0A101A; /* Azul bem escuro do fundo */
+    --color-text-primary: #FFFFFF;
+    --color-text-secondary: #adb5bd; /* Cinza claro para subtextos */
+    --color-accent: #D4AF37; /* Dourado (do seu prompt) */
+    --color-accent-light: #F0E68C; /* Dourado/Amarelo claro (dos textos "A Magia não para") */
+    
+    /* Fontes */
+    --font-primary: 'Poppins', sans-serif;
+    --font-secondary: 'Montserrat', sans-serif;
+}
+
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
 }
 
 body {
-  font-family: "Poppins", sans-serif;
-  background-color: #0a192f;
-  color: #fff;
-  overflow-x: hidden;
+    font-family: var(--font-primary);
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+    line-height: 1.6;
 }
 
-/* ========= NAVBAR ========= */
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+img {
+    max-width: 100%;
+    display: block;
+}
+
+h1, h2, h3 {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+}
+
+/* =======================
+   2. NAVBAR
+   ======================== */
 .navbar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  background: rgba(10, 25, 47, 0.8);
-  backdrop-filter: blur(10px);
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 15px 60px;
-  z-index: 1000;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1rem 5%;
+    background-color: rgba(10, 16, 26, 0.7); /* Fundo semi-transparente */
+    backdrop-filter: blur(10px); /* Efeito de vidro fosco */
+    z-index: 1000;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.navbar .logo img {
-  height: 55px;
+.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: 1300px;
+    margin: 0 auto;
 }
 
-.menu {
-  display: flex;
-  gap: 35px;
+.navbar-logo img {
+    height: 50px; /* Ajuste conforme o tamanho do seu logo */
 }
 
-.menu a {
-  color: #fff;
-  text-decoration: none;
-  font-weight: 500;
-  transition: color 0.3s;
+.nav-menu {
+    display: flex;
+    gap: 1.5rem;
 }
 
-.menu a:hover {
-  color: #d4af37;
+.nav-link {
+    font-family: var(--font-secondary);
+    font-weight: 400;
+    font-size: 0.9rem;
+    color: var(--color-text-primary);
+    transition: color 0.3s ease;
 }
 
-.login-icon a {
-  background: linear-gradient(45deg, #b30000, #d4af37);
-  color: #fff;
-  text-decoration: none;
-  padding: 10px 20px;
-  border-radius: 30px;
-  font-weight: 600;
-  transition: 0.3s;
+.nav-link:hover {
+    color: var(--color-accent);
 }
 
-.login-icon a:hover {
-  opacity: 0.8;
+.nav-btn-login {
+    font-family: var(--font-secondary);
+    font-weight: 700;
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+    background-color: var(--color-accent);
+    color: var(--color-background);
+    border-radius: 20px;
+    transition: all 0.3s ease;
 }
 
-/* ========= HERO ========= */
+.nav-btn-login:hover {
+    background-color: var(--color-accent-light);
+    transform: scale(1.05);
+}
+
+/* =======================
+   3. HERO SECTION
+   ======================== */
 .hero {
-  position: relative;
-  height: 100vh;
-  background: url("../img/castelo-bg.jpg") no-repeat center center/cover;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-}
-
-.hero .overlay {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  background: rgba(10, 25, 47, 0.7);
-  top: 0;
-  left: 0;
+    height: 100vh;
+    min-height: 700px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 0 5%;
+    
+    /* Imagem de fundo do seu design */
+    background-image: linear-gradient(rgba(10, 16, 26, 0.6), rgba(10, 16, 26, 0.9)), url('../img/castelo-bg.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
 }
 
 .hero-content {
-  position: relative;
-  z-index: 2;
-  max-width: 900px;
+    max-width: 800px;
+    position: relative;
+    top: -50px; /* Leve ajuste para compensar a navbar */
 }
 
-.hero-content h1 {
-  font-size: 3.2rem;
-  font-weight: 700;
-  line-height: 1.3;
-  color: #fff;
+.hero-title {
+    font-size: 3.5rem; /* Tamanho grande do título */
+    font-weight: 700;
+    line-height: 1.2;
+    color: var(--color-text-primary);
+    text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.5);
 }
 
-.hero-content p {
-  margin-top: 25px;
-  font-size: 1rem;
-  opacity: 0.7;
+.scroll-down {
+    display: inline-block;
+    margin-top: 3rem;
+    font-family: var(--font-secondary);
+    color: var(--color-text-secondary);
+    font-size: 0.9rem;
+    letter-spacing: 1px;
+    text-transform: uppercase;
 }
 
-/* ========= SEÇÕES ========= */
-.sections {
-  margin-top: 120px;
-  display: flex;
-  flex-direction: column;
-  gap: 120px;
-  padding: 0 100px 100px;
+.scroll-down img {
+    width: 16px;
+    margin: 0.5rem auto 0;
+    /* Adicione uma animação de 'bounce' se desejar */
 }
 
-.theme {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 60px;
-  flex-wrap: wrap;
-}
 
-.theme img {
-  width: 45%;
-  border-radius: 25px;
-  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.4);
-}
-
-.theme .text {
-  width: 45%;
-}
-
-.theme h2 {
-  font-size: 2rem;
-  color: #d4af37;
-  margin-bottom: 15px;
-}
-
-.theme p {
-  font-size: 1rem;
-  line-height: 1.6;
-  opacity: 0.9;
-  margin-bottom: 15px;
-}
-
-.theme a {
-  color: #b30000;
-  text-decoration: none;
-  font-weight: 600;
-}
-
-.theme a:hover {
-  color: #d4af37;
-}
-
-/* ========= RODAPÉ ========= */
-.footer {
-  background: #07101f;
-  padding: 60px 100px;
-  border-top: 2px solid rgba(255, 255, 255, 0.05);
+/* =======================
+   4. FOOTER
+   ======================== */
+.footer-container {
+    background-color: #060B11; /* Um tom ligeiramente diferente do fundo */
+    padding: 4rem 5% 1rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .footer-content {
-  display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr; /* Coluna da esquerda maior */
+    gap: 3rem;
+    max-width: 1300px;
+    margin: 0 auto 3rem auto;
 }
 
-.footer h4 {
-  color: #d4af37;
-  margin-bottom: 15px;
+.footer-logo {
+    height: 40px;
+    margin-bottom: 1rem;
 }
 
-.footer p, .footer a {
-  color: #ccc;
-  font-size: 0.9rem;
-  text-decoration: none;
+.footer-about p {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    max-width: 350px;
 }
 
-.footer a:hover {
-  color: #d4af37;
+.footer-info h3,
+.footer-contact h3 {
+    font-family: var(--font-secondary);
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+    color: var(--color-text-primary);
 }
 
-.footer .copyright {
-  text-align: center;
-  margin-top: 40px;
-  font-size: 0.8rem;
-  color: #777;
+.footer-info p,
+.footer-contact p,
+.footer-info a {
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
+    margin-bottom: 0.5rem;
 }
 
-/* ========= RESPONSIVIDADE ========= */
-@media (max-width: 1024px) {
-  .theme {
-    flex-direction: column;
-  }
+.footer-info a {
+    color: var(--color-accent);
+    transition: color 0.3s ease;
+}
+.footer-info a:hover {
+    color: var(--color-accent-light);
+}
 
-  .theme img,
-  .theme .text {
-    width: 100%;
-  }
+.footer-contact .whatsapp-number {
+    font-weight: 600;
+    color: var(--color-text-primary);
+}
 
-  .sections {
-    padding: 0 40px 80px;
-  }
+.footer-bottom {
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 1.5rem;
+    text-align: center;
+    font-size: 0.8rem;
+    color: var(--color-text-secondary);
+}
 
-  .navbar {
-    flex-direction: column;
-    gap: 15px;
-    padding: 20px;
-  }
-
-  .hero-content h1 {
-    font-size: 2.4rem;
-  }
+.footer-bottom p {
+    margin-bottom: 0.5rem;
 }

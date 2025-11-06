@@ -1,95 +1,110 @@
 <!DOCTYPE html>
-<html lang="pt-BR">
+<html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Setland - O Maior Parque Temático do Centro-Oeste</title>
-  <link rel="stylesheet" href="../css/style.css">
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Setland - O Maior Parque Temático do Centro-Oeste</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+    <link rel="stylesheet" href="../css/style.css">
 </head>
 <body>
 
-  <!-- Navbar -->
-  <header class="navbar">
-    <div class="logo">
-      <img src="../img/setland-logo.png" alt="Setland Logo">
-    </div>
-    <nav class="menu">
-      <a href="#">O Parque</a>
-      <a href="#">Cardápio</a>
-      <a href="ingressos.html">Ingressos</a>
-      <a href="#">Contato</a>
-      <a href="#">Sobre Nós</a>
+    <nav class="navbar">
+        <div class="navbar-container">
+            <a href="index.html" class="navbar-logo">
+                <img src="../img/setland-logo.png" alt="Logo Setland">
+            </a>
+            <ul class="nav-menu">
+                <li class="nav-item"><a href="#parque" class="nav-link">O Parque</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Cardápio</a></li>
+                <li class="nav-item"><a href="ingressos.html" class="nav-link">Ingressos</a></li>
+                <li class="nav-item"><a href="#contato" class="nav-link">Contato</a></li>
+                <li class="nav-item"><a href="#" class="nav-link">Sobre nós</a></li>
+            </ul>
+            <a href="login.html" class="nav-btn-login">Login</a>
+        </div>
     </nav>
-    <div class="login-icon">
-      <a href="login.html">Login</a>
-    </div>
-  </header>
 
-  <!-- Hero -->
-  <section class="hero">
-    <div class="overlay"></div>
-    <div class="hero-content">
-      <h1>Venha Se Divertir No<br>Maior Parque Temático<br>Do Centro-Oeste!</h1>
-      <p>scroll down ↓</p>
-    </div>
-  </section>
+    <main>
+        </section>
 
-  <!-- Seções Temáticas -->
-  <main class="sections">
-    <section class="theme glacial">
-      <div class="text">
-        <h2>Glacial</h2>
-        <p>
-          Explore o mundo mágico das geleiras e encontre personagens encantados em um ambiente frio e cheio de surpresas.
-          Cada atração foi pensada para transportar você ao coração do inverno!
-        </p>
-        <a href="#">Saiba mais →</a>
-      </div>
-      <img src="../img/glacial.jpg" alt="Glacial">
-    </section>
+        <section id="parque" class="showcase">
+            <div class="swiper showcase-carousel">
+                <div class="swiper-wrapper">
+                    
+                    <div class="swiper-slide">
+                        <img src="../img/Frame-18.jpg" alt="Personagens Setland">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="../img/Frame-17.jpg" alt="Personagens Setland">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="../img/Frame-30.jpg" alt="Personagens Setland">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="../img/Frame-16.jpg" alt="Personagens Setland">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="../img/Frame-29.jpg" alt="Personagens Setland">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="../img/Frame-15.jpg" alt="Personagens Setland">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="../img/Frame-28.jpg" alt="Personagens Setland">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="../img/Frame-14.jpg" alt="Personagens Setland">
+                    </div>
+                    <div class="swiper-slide">
+                        <img src="../img/Frame-27.jpg" alt="Personagens Setland">
+                    </div>
+                    
+                    </div>
+                
+                <div class="swiper-pagination"></div>
 
-    <section class="theme medieval">
-      <img src="../img/medieval.jpg" alt="Medieval">
-      <div class="text">
-        <h2>Medieval</h2>
-        <p>
-          Volte no tempo e viva a era dos cavaleiros, dragões e castelos! Uma experiência única onde o passado ganha vida em cada detalhe.
-        </p>
-        <a href="#">Saiba mais →</a>
-      </div>
-    </section>
+                <div class="swiper-button-prev"></div>
+                <div class="swiper-button-next"></div>
+            </div>
+        </section>
 
-    <section class="theme futuristico">
-      <div class="text">
-        <h2>Futurístico</h2>
-        <p>
-          Embarque em uma jornada rumo ao futuro! Com luzes, tecnologia e experiências imersivas, esse setor vai te levar a outra dimensão.
-        </p>
-        <a href="#">Saiba mais →</a>
-      </div>
-      <img src="../img/futuristico.jpg" alt="Futurístico">
-    </section>
-  </main>
+        <section id="themes" class="themes-container">
+            <div class="theme-placeholder"></div>
+        </section>
+        </main>
 
-  <!-- Rodapé -->
-  <footer class="footer">
-    <div class="footer-content">
-      <div>
-        <h4>Informações</h4>
-        <p>Localização: Caldas Novas - GO</p>
-        <p>Contato: (64) 99999-9999</p>
-        <p>Email: contato@setland.com.br</p>
-      </div>
-      <div>
-        <h4>Redes Sociais</h4>
-        <p><a href="#">Instagram</a></p>
-        <p><a href="#">Facebook</a></p>
-        <p><a href="#">YouTube</a></p>
-      </div>
-    </div>
-    <p class="copyright">© 2025 Setland Parque Temático. Todos os direitos reservados.</p>
-  </footer>
+    <footer id="contato" class="footer-container">
+        <div class="footer-content">
+            <div class="footer-about">
+                <img src="../img/setland-logo.png" alt="Logo Setland" class="footer-logo">
+                <p>O maior parque temático do Centro Oeste está localizado em Caldas Novas e conta com mais de 10 atrações e cenários de 3 eras do tempo: <strong>Glacial - Medieval - Futurístico</strong></p>
+            </div>
+            <div class="footer-info">
+                <h3>Mais Informações</h3>
+                <p>Das 18h às 00h</p>
+                <p>De terça à domingo</p>
+                <a href="#">Localização</a>
+            </div>
+            <div class="footer-contact">
+                <h3>Contato</h3>
+                <p>Whatsapp</p>
+                <p class="whatsapp-number">(64) 99347-1297</p>
+            </div>
+        </div>
+        <div class="footer-bottom">
+            <p>Rua Presidente Getúlio Vargas Quadra 63ª Lote 14, 20 e 21 Lagoa Quente, Caldas Novas - GO, 75680-001</p>
+            <p>Copyright Setland 2024 . Terms & Privacy</p>
+        </div>
+    </footer>
 
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    
+    <script src="../js/script.js"></script>
 </body>
 </html>
