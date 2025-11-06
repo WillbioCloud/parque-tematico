@@ -7,11 +7,20 @@
 
 :root {
     /* Cores (Baseado nos screenshots) */
-    --color-background: #0A101A; /* Azul bem escuro do fundo */
+    --color-background: #0A101A;
     --color-text-primary: #FFFFFF;
-    --color-text-secondary: #adb5bd; /* Cinza claro para subtextos */
-    --color-accent: #D4AF37; /* Dourado (do seu prompt) */
-    --color-accent-light: #F0E68C; /* Dourado/Amarelo claro (dos textos "A Magia não para") */
+    --color-text-secondary: #adb5bd;
+    --color-accent: #D4AF37;
+    --color-accent-light: #F0E68C;
+    --color-card-bg: rgba(255, 255, 255, 0.05);
+    --color-card-border: rgba(255, 255, 255, 0.1);
+    
+    /* === NOVAS VARIÁVEIS DO MODO CLARO === */
+    --color-background-light: #F4F7FC;
+    --color-text-primary-light: #0A101A;
+    --color-text-secondary-light: #555;
+    --color-card-bg-light: #FFFFFF;
+    --color-card-border-light: rgba(0, 0, 0, 0.1);
     
     /* Fontes */
     --font-primary: 'Poppins', sans-serif;
@@ -107,6 +116,29 @@ h1, h2, h3 {
     color: var(--color-background);
     border-radius: 20px;
     transition: all 0.3s ease;
+}
+
+.navbar-controls {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.theme-toggle-btn {
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    color: var(--color-text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+.theme-toggle-btn:hover {
+    background: var(--color-accent);
+    color: var(--color-background);
+    border-color: var(--color-accent);
 }
 
 .nav-btn-login:hover {
@@ -761,4 +793,96 @@ h1, h2, h3 {
 .ingresso-cards-grid .ingresso-none a {
     color: var(--color-accent);
     font-weight: 600;
+}
+
+/* =======================
+   8. LIGHT MODE (Modo Claro)
+   ======================== */
+
+body.light-mode {
+    --color-background: var(--color-background-light);
+    --color-text-primary: var(--color-text-primary-light);
+    --color-text-secondary: var(--color-text-secondary-light);
+    --color-card-bg: var(--color-card-bg-light);
+    --color-card-border: var(--color-card-border-light);
+    
+    background-color: var(--color-background);
+    color: var(--color-text-primary);
+}
+
+/* --- Sobrescritas de Estilo para o Modo Claro --- */
+
+.light-mode .navbar {
+    background-color: rgba(255, 255, 255, 0.7);
+    border-bottom: 1px solid var(--color-card-border);
+}
+.light-mode .nav-link {
+    color: var(--color-text-primary-light);
+}
+.light-mode .nav-link:hover {
+    color: var(--color-accent);
+}
+
+.light-mode .theme-toggle-btn {
+    background: var(--color-card-bg-light);
+    border-color: var(--color-card-border-light);
+    color: var(--color-text-primary-light);
+}
+.light-mode .theme-toggle-btn:hover {
+    background: var(--color-accent);
+    color: #FFF;
+}
+
+.light-mode .hero-title {
+    color: var(--color-text-primary-light);
+    text-shadow: none;
+}
+.light-mode .hero {
+    background-image: linear-gradient(rgba(244, 247, 252, 0.6), rgba(244, 247, 252, 0.9)), url('../img/castelo-bg.jpg');
+}
+
+.light-mode .theme-number {
+    color: rgba(0, 0, 0, 0.05);
+}
+
+.light-mode .footer-container {
+    background-color: #E9EDF5;
+    border-top-color: var(--color-card-border);
+}
+.light-mode .footer-bottom {
+    border-top-color: var(--color-card-border);
+}
+
+/* Páginas de Auth, Ingressos e Minha Conta */
+.light-mode .auth-page,
+.light-mode .tickets-page,
+.light-mode .meus-ingressos-page {
+    background: var(--color-background-light);
+}
+
+.light-mode .auth-container,
+.light-mode .tickets-container,
+.light-mode .meus-ingressos-container {
+    background-color: var(--color-card-bg-light);
+    border-color: var(--color-card-border-light);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .auth-container input {
+    background-color: #EFEFEF;
+    border-color: var(--color-card-border);
+    color: var(--color-text-primary-light);
+}
+.light-mode .auth-container input:focus {
+    background-color: #FFF;
+}
+
+.light-mode .ticket-card,
+.light-mode .ingresso-card {
+    background-color: #F4F7FC;
+    border-color: var(--color-card-border);
+}
+
+.light-mode .ingresso-none {
+    border-color: var(--color-card-border);
 }

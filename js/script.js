@@ -6,7 +6,6 @@
 document.addEventListener('DOMContentLoaded', function() {
 
     // 🔸 INICIALIZAÇÃO DO CARROSSEL SWIPER (NA INDEX)
-    // Verifica se estamos na página certa para rodar o Swiper
     if (document.querySelector('.showcase-carousel')) {
         const showcaseSwiper = new Swiper('.showcase-carousel', {
             loop: true,
@@ -50,6 +49,44 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 
+    // ==================================================
+    // 🚀 NOVA LÓGICA DE MODO CLARO/ESCURO (TOGGLE)
+    // ==================================================
+    
+    const themeToggleBtn = document.getElementById('theme-toggle');
+    const body = document.body;
+    
+    // Função para aplicar o tema salvo
+    function aplicarTemaSalvo() {
+        const temaSalvo = localStorage.getItem('theme');
+        if (temaSalvo === 'light') {
+            body.classList.add('light-mode');
+            if (themeToggleBtn) themeToggleBtn.textContent = '☀️';
+        } else {
+            body.classList.remove('light-mode');
+            if (themeToggleBtn) themeToggleBtn.textContent = '🌙';
+        }
+    }
+
+    // Aplica o tema salvo assim que a página carrega
+    aplicarTemaSalvo();
+
+    // Lógica de clique no botão (se ele existir na página)
+    if (themeToggleBtn) {
+        themeToggleBtn.addEventListener('click', () => {
+            body.classList.toggle('light-mode');
+            
+            // Salva a preferência no localStorage
+            if (body.classList.contains('light-mode')) {
+                localStorage.setItem('theme', 'light');
+                themeToggleBtn.textContent = '☀️';
+            } else {
+                localStorage.setItem('theme', 'dark');
+                themeToggleBtn.textContent = '🌙';
+            }
+        });
+    }
+
     // 🔸 Detecta horário e aplica tema automático
     const hora = new Date().getHours();
     if (hora >= 6 && hora < 18) {
@@ -58,23 +95,17 @@ document.addEventListener('DOMContentLoaded', function() {
         document.body.classList.remove('tema-claro');
     }
 
-    // 🔸 Estrutura de login / perfil
+    // 🔸 Estrutura de login / perfil (Apenas pega o usuário, a lógica de mudar o botão vem no final)
     const user = JSON.parse(localStorage.getItem('usuarioSetland')) || null;
-    carregarPerfil();
-
-    function carregarPerfil() {
-        if (!user) {
-            console.log("Usuário não logado. Exibir opção de login.");
-        } else {
-            console.log(`Bem-vindo novamente, ${user.nome}`);
-            // Futuramente: alterar o botão "Login" para "Meu Perfil"
-        }
+    if (user) {
+        console.log(`Bem-vindo novamente, ${user.nome}`);
+    } else {
+        console.log("Usuário não logado. Exibir opção de login.");
     }
 
+
     // 🔸 Sistema base para futuras notificações e interações
-    // Tornando a função global para ser acessada por outros scripts se necessário
     window.showAlert = function(msg, tipo = 'info', container = document.body) {
-        // Remove alertas antigos
         const alertaAntigo = document.querySelector('.alerta');
         if (alertaAntigo) {
             alertaAntigo.remove();
@@ -85,16 +116,16 @@ document.addEventListener('DOMContentLoaded', function() {
         alerta.textContent = msg;
 
         if (container === document.body) {
-            document.body.prepend(alerta); // Adiciona no topo do body
+            document.body.prepend(alerta);
         } else {
-            container.prepend(alerta); // Adiciona no topo do container (ex: formulário)
+            container.prepend(alerta);
         }
         
         setTimeout(() => alerta.remove(), 4000);
     }
 
     // ==================================================
-    // 🚀 NOVA LÓGICA DE AUTENTICAÇÃO (LOGIN E CADASTRO)
+    // 🚀 LÓGICA DE AUTENTICAÇÃO (LOGIN E CADASTRO)
     // ==================================================
 
     const authContainer = document.querySelector('.auth-container');
@@ -109,21 +140,18 @@ document.addEventListener('DOMContentLoaded', function() {
             const email = document.getElementById('signupEmail').value;
             const senha = document.getElementById('signupPassword').value;
 
-            // Simples verificação se o usuário já existe
             const usuariosSalvos = JSON.parse(localStorage.getItem('usuariosSetland')) || [];
             const usuarioExistente = usuariosSalvos.find(user => user.email === email);
 
             if (usuarioExistente) {
                 showAlert('Este e-mail já está cadastrado.', 'erro', authContainer);
             } else {
-                // Adiciona o novo usuário
-                const novoUsuario = { nome, email, senha }; // NOTA: Em um projeto real, a senha NUNCA é salva assim.
+                const novoUsuario = { nome, email, senha };
                 usuariosSalvos.push(novoUsuario);
                 localStorage.setItem('usuariosSetland', JSON.stringify(usuariosSalvos));
 
                 showAlert('Cadastro realizado com sucesso!', 'sucesso', authContainer);
 
-                // Redireciona para o login após 2 segundos
                 setTimeout(() => {
                     window.location.href = 'login.html';
                 }, 2000);
@@ -141,31 +169,22 @@ document.addEventListener('DOMContentLoaded', function() {
             const senha = document.getElementById('loginPassword').value;
 
             const usuariosSalvos = JSON.parse(localStorage.getItem('usuariosSetland')) || [];
-            
-            // Procura o usuário no "banco de dados"
             const usuarioEncontrado = usuariosSalvos.find(user => user.email === email && user.senha === senha);
 
             if (usuarioEncontrado) {
-                // Login bem-sucedido!
-                // Salva o usuário logado na sessão (localStorage)
                 localStorage.setItem('usuarioSetland', JSON.stringify(usuarioEncontrado));
-
                 showAlert('Login efetuado! Redirecionando...', 'sucesso', authContainer);
-
-                // Redireciona para a página inicial
                 setTimeout(() => {
-                    window.location.href = 'index.html'; // Redireciona para a home
+                    window.location.href = 'index.html';
                 }, 2000);
-
             } else {
-                // Credenciais erradas
                 showAlert('E-mail ou senha incorretos.', 'erro', authContainer);
             }
         });
     }
 
     // ==================================================
-    // 🚀 NOVA LÓGICA DE INGRESSOS (ingressos.html)
+    // 🚀 LÓGICA DE INGRESSOS (ingressos.html)
     // ==================================================
 
     const ticketsPage = document.querySelector('.tickets-page');
@@ -175,7 +194,7 @@ document.addEventListener('DOMContentLoaded', function() {
         const totalValueEl = document.getElementById('totalValue');
         const finalizarCompraBtn = document.getElementById('finalizarCompra');
         
-        let carrinho = []; // Array para guardar os ingressos
+        let carrinho = [];
 
         ticketCards.forEach(card => {
             const plusBtn = card.querySelector('.plus');
@@ -183,8 +202,6 @@ document.addEventListener('DOMContentLoaded', function() {
             const valueEl = card.querySelector('.counter-value');
             
             let quantidade = 0;
-            const preco = parseFloat(card.dataset.price);
-            const tipo = card.dataset.type;
 
             plusBtn.addEventListener('click', () => {
                 quantidade++;
@@ -203,7 +220,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
         function atualizarTotal() {
             let totalGeral = 0;
-            carrinho = []; // Limpa o carrinho para recalcular
+            carrinho = []; 
 
             ticketCards.forEach(card => {
                 const quantidade = parseInt(card.querySelector('.counter-value').textContent);
@@ -222,52 +239,38 @@ document.addEventListener('DOMContentLoaded', function() {
                 }
             });
 
-            // Formata como moeda (R$ 130,00)
             totalValueEl.textContent = totalGeral.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
         }
 
-        // --- Finalizar Compra ---
         finalizarCompraBtn.addEventListener('click', () => {
-            // 1. Verifica se está logado
             const usuarioLogado = JSON.parse(localStorage.getItem('usuarioSetland'));
             
             if (!usuarioLogado) {
-                // Se não estiver logado, avisa e redireciona para o login
                 showAlert('Você precisa estar logado para comprar ingressos.', 'erro');
                 setTimeout(() => {
                     window.location.href = 'login.html';
                 }, 3000);
-                return; // Para a execução
+                return;
             }
 
-            // 2. Verifica se adicionou ingressos
             if (carrinho.length === 0) {
                 showAlert('Adicione pelo menos um ingresso ao carrinho.', 'erro', ticketsPage.querySelector('.tickets-container'));
                 return;
             }
 
-            // 3. Salva no localStorage e redireciona
-            // (Vamos salvar como 'meusIngressos')
             localStorage.setItem('meusIngressos', JSON.stringify(carrinho));
-            
             showAlert('Compra realizada com sucesso! Redirecionando...', 'sucesso', ticketsPage.querySelector('.tickets-container'));
             
             setTimeout(() => {
                 window.location.href = 'meus-ingressos.html';
             }, 2000);
         });
-    }
+    } // <-- Fim do "if (ticketsPage)"
 
-    // Também vamos atualizar o botão de Login na navbar se o usuário estiver logado
-    const navLoginButton = document.getElementById('nav-login-button');
-    if (navLoginButton && user) {
-        navLoginButton.textContent = 'Meu Perfil';
-        navLoginButton.href = 'meus-ingressos.html'; // Manda para a pág. de ingressos
-    // ... (Aqui termina o bloco do ticketsPage)
-    }
+    // (AQUELE COLCHETE EXTRA ESTAVA AQUI, EU O REMOVI)
 
     // ==================================================
-    // 🚀 NOVA LÓGICA DE MEUS INGRESSOS (meus-ingressos.html)
+    // 🚀 LÓGICA DE MEUS INGRESSOS (meus-ingressos.html)
     // ==================================================
     
     const meusIngressosPage = document.querySelector('.meus-ingressos-page');
@@ -277,21 +280,17 @@ document.addEventListener('DOMContentLoaded', function() {
         const container = document.getElementById('ingressoCardsContainer');
         const logoutButton = document.getElementById('logoutButton');
 
-        // 1. Proteger a página: verificar se está logado
         if (!usuarioLogado) {
-            // Se não estiver logado, chuta para a página de login
             showAlert('Você precisa estar logado para ver esta página.', 'erro');
             setTimeout(() => {
                 window.location.href = 'login.html';
             }, 3000);
-            return; // Para a execução
+            return;
         }
 
-        // 2. Carregar os ingressos
         const ingressosComprados = JSON.parse(localStorage.getItem('meusIngressos')) || [];
 
         if (ingressosComprados.length === 0) {
-            // Se não comprou nada, mostra mensagem
             container.innerHTML = `
                 <div class="ingresso-none">
                     <p>Você ainda não comprou nenhum ingresso.</p>
@@ -299,7 +298,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 </div>
             `;
         } else {
-            // Se comprou, gera os cards
             ingressosComprados.forEach(ingresso => {
                 const precoFormatado = ingresso.precoTotal.toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' });
                 
@@ -314,21 +312,27 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         }
         
-        // 3. Funcionalidade do botão Logout
         logoutButton.addEventListener('click', () => {
-            // Limpa os dados de "sessão" e "compras"
             localStorage.removeItem('usuarioSetland');
-            localStorage.removeItem('meusIngressos'); // Limpa os ingressos ao sair
-            
+            localStorage.removeItem('meusIngressos');
             showAlert('Deslogado com sucesso! Redirecionando...', 'sucesso');
-            
             setTimeout(() => {
-                window.location.href = 'index.html'; // Manda para a home
+                window.location.href = 'index.html';
             }, 2000);
         });
-    }
+    } // <-- Fim do "if (meusIngressosPage)"
 
-    // (O código que atualiza o botão de Login na navbar já existe no passo anterior)
+
+    // ==================================================
+    // 🚀 LÓGICA GLOBAL (Roda em todas as páginas)
+    // ==================================================
+
+    // Atualiza o botão de Login/Meu Perfil em TODAS as páginas
+    const navLoginButton = document.getElementById('nav-login-button');
+    if (navLoginButton && user) {
+        navLoginButton.textContent = 'Meu Perfil';
+        navLoginButton.href = 'meus-ingressos.html';
+    }
     
     console.log("🌟 Script Setland carregado com sucesso!");
 
