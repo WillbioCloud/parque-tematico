@@ -87,6 +87,23 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ==================================================
+    // 🚀 NOVA LÓGICA DE MENU MOBILE (HAMBÚRGUER)
+    // ==================================================
+    
+    const menuToggle = document.getElementById('mobile-menu-toggle');
+    const navMenuList = document.getElementById('nav-menu-list');
+
+    if (menuToggle && navMenuList) {
+        menuToggle.addEventListener('click', () => {
+            // Adiciona/remove a classe 'active' no <ul>
+            navMenuList.classList.toggle('active');
+            
+            // Adiciona/remove a classe 'active' no botão (para o X)
+            menuToggle.classList.toggle('active');
+        });
+    }
+
     // 🔸 Detecta horário e aplica tema automático
     const hora = new Date().getHours();
     if (hora >= 6 && hora < 18) {
