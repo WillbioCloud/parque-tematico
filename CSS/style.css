@@ -1078,7 +1078,7 @@ body.light-mode {
 }
 
 /* =======================
-   10. MENU PAGE (Cardápio)
+   10. MENU PAGE (Cardápio v2 - Visual)
    ======================== */
 
 .menu-page {
@@ -1087,22 +1087,18 @@ body.light-mode {
     background: linear-gradient(135deg, var(--color-background), #060B11);
 }
 
-.menu-container {
-    max-width: 900px;
+.menu-container-v2 {
+    max-width: 1200px; /* Mais largo para o layout visual */
     margin: 0 auto;
-    background-color: var(--color-card-bg);
-    border: 1px solid var(--color-card-border);
-    border-radius: 16px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    padding: 2.5rem;
+    /* Removemos o 'card' da página inteira,
+       vamos estilizar categoria por categoria */
 }
 
 .menu-header {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 4rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid var(--color-card-border);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .menu-header h1 {
@@ -1117,20 +1113,66 @@ body.light-mode {
     font-family: var(--font-secondary);
 }
 
-.menu-category {
-    margin-bottom: 3rem;
+/* Layout visual da categoria (Grid de 2 colunas) */
+.menu-category-visual {
+    display: grid;
+    grid-template-columns: 1fr 1.2fr; /* Coluna da imagem | Coluna do texto */
+    gap: 3rem;
+    align-items: flex-start;
+    margin-bottom: 5rem;
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    border-radius: 16px;
+    overflow: hidden; /* Garante que a imagem não vaze */
 }
 
-.category-title {
-    font-size: 2rem;
+/* Versão Invertida (Texto | Imagem) */
+.menu-category-visual.category-inverted {
+    grid-template-columns: 1.2fr 1fr;
+}
+.menu-category-visual.category-inverted .category-image {
+    order: 2;
+}
+.menu-category-visual.category-inverted .category-items {
+    order: 1;
+}
+
+.category-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    min-height: 400px;
+    opacity: 0.85;
+}
+
+.category-items {
+    padding: 2.5rem;
+}
+
+/* Layout de texto completo (para Pizzas, etc) */
+.menu-category-full {
+    margin-bottom: 5rem;
+    padding: 2.5rem;
+    background: var(--color-card-bg);
+    border: 1px solid var(--color-card-border);
+    border-radius: 16px;
+}
+
+.category-title-ornate {
+    font-size: 2.2rem;
     color: var(--color-accent-light);
     font-family: var(--font-secondary);
     margin-bottom: 2rem;
-    border-bottom: 1px solid var(--color-accent);
-    padding-bottom: 0.5rem;
-    display: inline-block;
 }
 
+.category-border {
+    width: 100%;
+    max-width: 400px;
+    margin: -1rem auto 2rem auto;
+    opacity: 0.5;
+}
+
+/* Estilos dos itens (o mesmo de antes) */
 .menu-item {
     margin-bottom: 1.5rem;
 }
@@ -1146,17 +1188,19 @@ body.light-mode {
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--color-text-primary);
+    flex-shrink: 0; /* Não deixa o nome encolher */
 }
 
 .item-price {
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--color-text-primary);
+    flex-shrink: 0;
 }
 
 .item-dots {
     flex-grow: 1;
-    border-bottom: 2px dotted var(--color-card-border);
+    border-bottom: 2px dotted rgba(255, 255, 255, 0.3);
     position: relative;
     bottom: 4px;
 }
@@ -1164,8 +1208,6 @@ body.light-mode {
 .item-desc {
     font-size: 0.9rem;
     color: var(--color-text-secondary);
-    padding-left: 1rem;
-    border-left: 2px solid var(--color-accent);
     margin-top: 0.5rem;
 }
 
@@ -1187,23 +1229,72 @@ body.light-mode {
     color: var(--color-text-primary);
 }
 .menu-item-pizza .item-desc {
-    padding-left: 0;
-    border-left: none;
+    font-size: 0.9rem;
+    color: var(--color-text-secondary);
     margin-top: 0;
 }
 
-/* --- Responsividade do Cardápio --- */
+/* --- Responsividade do Cardápio v2 --- */
+@media (max-width: 900px) {
+    .menu-category-visual,
+    .menu-category-visual.category-inverted {
+        grid-template-columns: 1fr; /* Coluna única */
+    }
+    .menu-category-visual.category-inverted .category-image {
+        order: 0; /* Reseta a ordem */
+    }
+    .category-image img {
+        min-height: auto;
+        height: 300px;
+        border-radius: 16px 16px 0 0;
+    }
+    .category-items {
+        padding: 2rem;
+    }
+}
+
 @media (max-width: 768px) {
-    .menu-container {
-        padding: 1.5rem;
+    .menu-page {
+        padding: 6rem 3% 3rem;
+    }
+    .menu-container-v2 {
+        padding: 0;
     }
     .menu-header h1 {
         font-size: 2.2rem;
     }
-    .category-title {
+    .category-title-ornate {
         font-size: 1.8rem;
     }
     .item-name, .item-price, .menu-item-pizza .item-pizza-prices {
         font-size: 1rem;
     }
+    .item-dots {
+        display: none; /* Esconde as linhas pontilhadas no mobile */
+    }
+    .menu-item-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0;
+    }
+}
+
+/* --- Sobrescrita do Modo Claro para o Cardápio v2 --- */
+.light-mode .menu-page {
+    background: var(--color-background-light);
+}
+
+.light-mode .menu-header {
+    border-bottom-color: var(--color-card-border);
+}
+
+.light-mode .menu-category-visual,
+.light-mode .menu-category-full {
+    background: var(--color-card-bg-light);
+    border-color: var(--color-card-border-light);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+.light-mode .item-dots {
+    border-bottom-color: rgba(0, 0, 0, 0.1);
 }
