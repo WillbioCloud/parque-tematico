@@ -104,6 +104,70 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     }
 
+    // ==================================================
+    // 🚀 NOVA LÓGICA DO SCROLL SLIDER (Home Page)
+    // ==================================================
+
+    const slider = document.getElementById('scroll-slider');
+
+    // Só execute este script se o slider existir (estamos na index.html)
+    if (slider) {
+        const sliderLinks = slider.querySelectorAll('.slider-link');
+        const sections = [
+            document.getElementById('inicio'),
+            document.getElementById('glacial'),
+            document.getElementById('medieval'),
+            document.getElementById('futuristico')
+        ];
+
+        // --- 1. Funcionalidade de Smooth Scroll ---
+        sliderLinks.forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+                if (targetSection) {
+                    targetSection.scrollIntoView({
+                        behavior: 'smooth'
+                    });
+                }
+            });
+        });
+
+        // --- 2. Funcionalidade de ScrollSpy (Ativar link na rolagem) ---
+        const observerOptions = {
+            root: null, // Observa em relação ao viewport
+            rootMargin: '0px',
+            threshold: 0.4 // Ativa quando 40% da seção estiver visível
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    const id = entry.target.id;
+                    
+                    // Remove 'active' de todos
+                    sliderLinks.forEach(link => {
+                        link.classList.remove('active');
+                    });
+
+                    // Adiciona 'active' ao link correspondente
+                    const activeLink = slider.querySelector(`a[href="#${id}"]`);
+                    if (activeLink) {
+                        activeLink.classList.add('active');
+                    }
+                }
+            });
+        }, observerOptions);
+
+        // Observa todas as seções
+        sections.forEach(section => {
+            if (section) {
+                observer.observe(section);
+            }
+        });
+    }
+
     // 🔸 Detecta horário e aplica tema automático
     const hora = new Date().getHours();
     if (hora >= 6 && hora < 18) {

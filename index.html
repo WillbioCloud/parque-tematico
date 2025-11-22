@@ -10,14 +10,14 @@
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
     <nav class="navbar">
         <div class="navbar-container">
             <a href="index.html" class="navbar-logo">
-                <img src="../img/setland-logo.png" alt="Logo Setland">
+                <img src="img/setland-logo.png" alt="Logo Setland">
             </a>
             
             <button class="nav-toggle" id="mobile-menu-toggle" aria-label="Menu">
@@ -41,13 +41,33 @@
         </div>
     </nav>
 
+    <nav class="scroll-slider" id="scroll-slider">
+        <a href="#inicio" class="slider-link active">
+            <span>Start</span>
+            <div class="slider-dot"></div>
+        </a>
+        <div class="slider-line"></div>
+        <a href="#glacial" class="slider-link">
+            <span>01</span>
+            <div class="slider-dot"></div>
+        </a>
+        <a href="#medieval" class="slider-link">
+            <span>02</span>
+            <div class="slider-dot"></div>
+        </a>
+        <a href="#futuristico" class="slider-link">
+            <span>03</span>
+            <div class="slider-dot"></div>
+        </a>
+    </nav>
+
     <main>
-        <section class="hero">
+        <section class="hero" id="inicio">
             <div class="hero-content">
                 <h1 class="hero-title">Venha Se Divertir No Maior Parque Temático Do Centro-Oeste!</h1>
-                <a href="#themes" class="scroll-down">
+                <a href="#glacial" class="scroll-down">
                     scroll down
-                    <img src="../img/arrow-down.svg" alt="Rolar para baixo"> 
+                    <img src="img/arrow-down.svg" alt="Rolar para baixo"> 
                 </a>
             </div>
         </section>
@@ -55,19 +75,19 @@
         <section id="parque" class="showcase">
             <div class="swiper showcase-carousel">
                 <div class="swiper-wrapper">
-                    <div class="swiper-slide"><img src="../img/Property 1=Frame 18.png" alt="Personagens Setland"></div>
-                    <div class="swiper-slide"><img src="../img/Property 1=Frame 17.png" alt="Personagens Setland"></div>
-                    <div class="swiper-slide"><img src="../img/Property 1=Frame 30.png" alt="Personagens Setland"></div>
-                    <div class="swiper-slide"><img src="../img/Property 1=Frame 16.png" alt="Personagens Setland"></div>
-                    <div class="swiper-slide"><img src="../img/Property 1=Frame 29.png" alt="Personagens Setland"></div>
-                    <div class="swiper-slide"><img src="../img/Property 1=Frame 15.png" alt="Personagens Setland"></div>
-                    <div class="swiper-slide"><img src="../img/Property 1=Frame 28.png" alt="Personagens Setland"></div>
-                    <div class="swiper-slide"><img src="../img/Property 1=Frame 14.png" alt="Personagens Setland"></div>
-                    <div class="swiper-slide"><img src="../img/Property 1=Frame 27.png" alt="Personagens Setland"></div>
-                    <div class="swiper-slide"><img src="../img/Property 1=Frame 13.png" alt="Personagens Setland"></div>
-                    <div class="swiper-slide"><img src="../img/Property 1=Frame 22.png" alt="Personagens Setland"></div>
-                    <div class="swiper-slide"><img src="../img/Property 1=Frame 6.png" alt="Personagens Setland"></div>
-                    <div class="swiper-slide"><img src="../img/Property 1=Frame 7.png" alt="Personagens Setland"></div>
+                    <div class="swiper-slide"><img src="img/Property 1=Frame 18.png" alt="Personagens Setland"></div>
+                    <div class="swiper-slide"><img src="img/Property 1=Frame 17.png" alt="Personagens Setland"></div>
+                    <div class="swiper-slide"><img src="img/Property 1=Frame 30.png" alt="Personagens Setland"></div>
+                    <div class="swiper-slide"><img src="img/Property 1=Frame 16.png" alt="Personagens Setland"></div>
+                    <div class="swiper-slide"><img src="img/Property 1=Frame 29.png" alt="Personagens Setland"></div>
+                    <div class="swiper-slide"><img src="img/Property 1=Frame 15.png" alt="Personagens Setland"></div>
+                    <div class="swiper-slide"><img src="img/Property 1=Frame 28.png" alt="Personagens Setland"></div>
+                    <div class="swiper-slide"><img src="img/Property 1=Frame 14.png" alt="Personagens Setland"></div>
+                    <div class="swiper-slide"><img src="img/Property 1=Frame 27.png" alt="Personagens Setland"></div>
+                    <div class="swiper-slide"><img src="img/Property 1=Frame 13.png" alt="Personagens Setland"></div>
+                    <div class="swiper-slide"><img src="img/Property 1=Frame 22.png" alt="Personagens Setland"></div>
+                    <div class="swiper-slide"><img src="img/Property 1=Frame 6.png" alt="Personagens Setland"></div>
+                    <div class="swiper-slide"><img src="img/Property 1=Frame 7.png" alt="Personagens Setland"></div>
                 </div>
                 
                 <div class="swiper-pagination"></div>
@@ -76,53 +96,62 @@
             </div>
         </section>
 
+        </section> <section class="castle-bus-section">
+            <div class="castle-bus-content">
+                <h2>Seu passaporte para 3 Destinos inesquecíveis</h2>
+                <p>Nossos ônibus temáticos são o primeiro passo da sua jornada através do tempo.</p>
+                <a href="ingressos.html" class="cta-button">Garanta seu Ingresso Agora!</a>
+            </div>
+        </section>
+        <section id="themes" class="themes-container">
+
         <section id="themes" class="themes-container">
             
-            <article class="theme-card">
+            <article class="theme-card" id="glacial">
                 <div class="theme-content">
                     <span class="theme-pretitle">Vamos lá</span>
                     <h2 class="theme-title">
                         <span class="theme-number">01</span>
                         Glacial
                     </h2>
-                    <p>Mergulhe na aventura congelante do Parque de Gelo do Castelo Setland, uma das atrações mais emocionantes do parque temático! Com temperaturas que chegam a 17 graus Celsius abaixo de zero, é o destino perfeito para os corajosos em busca de uma experiência única.</p>
-                    <p>Sinta a magia da neve e do gelo em pleno centro-oeste brasileiro, algo realmente raro! E para garantir o conforto durante a aventura, o Castelo Setland oferece casacos quentinhos e higienizados diariamente.</p>
+                    <p>Mergulhe na aventura congelante do Parque de Gelo do Castelo Setland...</p>
+                    <p>Sinta a magia da neve e do gelo em pleno centro-oeste brasileiro...</p>
                     <a href="#" class="theme-link">Leia mais <span>→</span></a>
                 </div>
                 <div class="theme-image">
-                    <img src="../img/glacial.jpg" alt="Parque Glacial Setland">
+                    <img src="img/glacial.jpg" alt="Parque Glacial Setland">
                 </div>
             </article>
 
-            <article class="theme-card theme-inverted">
+            <article class="theme-card theme-inverted" id="medieval">
                 <div class="theme-content">
                     <span class="theme-pretitle">Está gostando? Tem mais.</span>
                     <h2 class="theme-title">
                         <span class="theme-number">02</span>
                         Medieval
                     </h2>
-                    <p>A Vila Medieval do Castelo Setland é um verdadeiro espetáculo, transportando os visitantes diretamente para a atmosfera mágica da Idade Média! Com um cenário deslumbrante, é fácil se sentir parte de outra época.</p>
-                    <p>A neve artificial que cai sobre a vila acrescenta um toque de magia e encantamento, criando uma experiência ainda mais imersiva. Para completar, as apresentações teatrais diárias com personagens fantásticos e os duelos de sabre de luz tornam a visita uma aventura épica.</p>
+                    <p>A Vila Medieval do Castelo Setland é um verdadeiro espetáculo...</p>
+                    <p>A neve artificial que cai sobre a vila acrescenta um toque de magia...</p>
                     <a href="#" class="theme-link">Leia mais <span>→</span></a>
                 </div>
                 <div class="theme-image">
-                    <img src="../img/medieval.jpg" alt="Vila Medieval Setland">
+                    <img src="img/medieval.jpg" alt="Vila Medieval Setland">
                 </div>
             </article>
 
-            <article class="theme-card">
+            <article class="theme-card" id="futuristico">
                 <div class="theme-content">
                     <span class="theme-pretitle">A magia não para por aqui</span>
                     <h2 class="theme-title">
                         <span class="theme-number">03</span>
                         Futurístico
                     </h2>
-                    <p>O espaço futurístico do Castelo SETLAND é um verdadeiro espetáculo de tecnologia, levando os visitantes a uma jornada épica pelo tempo! Com painéis infinitos, robôs, hologramas e luzes laser, este ambiente futurista desperta a imaginação sobre o futuro da humanidade.</p>
-                    <p>A tecnologia de ponta cria uma experiência incrivelmente imersiva, transportando todos para um universo de ficção científica. Dentro deste espaço, você pode experimentar a realidade aumentada.</p>
+                    <p>O espaço futurístico do Castelo SETLAND é um verdadeiro espetáculo de tecnologia...</p>
+                    <p>A tecnologia de ponta cria uma experiência incrivelmente imersiva...</p>
                     <a href="#" class="theme-link">Leia mais <span>→</span></a>
                 </div>
                 <div class="theme-image">
-                    <img src="../img/Property 1=Frame 22.png" alt="Área Futurística Setland">
+                    <img src="img/Property 1=Frame 22.png" alt="Área Futurística Setland">
                 </div>
             </article>
 
@@ -133,8 +162,10 @@
     <footer id="contato" class="footer-container">
         <div class="footer-content">
             <div class="footer-about">
-                <img src="../img/setland-logo.png" alt="Logo Setland" class="footer-logo">
-                <p>O maior parque temático do Centro Oeste está localizado em Caldas Novas e conta com mais de 10 atrações e cenários de 3 eras do tempo: <strong>Glacial - Medieval - Futurístico</strong></p>
+                <img src="img/setland-logo.png" alt="Logo Setland" class="footer-logo">
+                <p>O maior parque temático do Centro Oeste está localizado em Caldas Novas
+                e conta com mais de 10 atrações e cenários de 3 eras do tempo:</p>
+                <p>Glacial - Medieval - Futuristico</p>
             </div>
             <div class="footer-info">
                 <h3>Mais Informações</h3>
@@ -155,6 +186,6 @@
     </footer>
 
     <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
-    <script src="../js/script.js"></script>
+    <script src="js/script.js"></script>
 </body>
 </html>
